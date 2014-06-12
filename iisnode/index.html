@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"KENGO-PC-1080-stderr-1402574552712.txt","computername":"KENGO-PC","pid":1080,"type":"stderr","created":1402574552712},{"file":"KENGO-PC-124-stderr-1402574560694.txt","computername":"KENGO-PC","pid":124,"type":"stderr","created":1402574560694},{"file":"KENGO-PC-1388-stderr-1402574554001.txt","computername":"KENGO-PC","pid":1388,"type":"stderr","created":1402574554001},{"file":"KENGO-PC-2188-stderr-1402574552190.txt","computername":"KENGO-PC","pid":2188,"type":"stderr","created":1402574552190},{"file":"KENGO-PC-2532-stderr-1402574568487.txt","computername":"KENGO-PC","pid":2532,"type":"stderr","created":1402574568487},{"file":"KENGO-PC-2564-stderr-1402574550686.txt","computername":"KENGO-PC","pid":2564,"type":"stderr","created":1402574550686},{"file":"KENGO-PC-2728-stderr-1402574559233.txt","computername":"KENGO-PC","pid":2728,"type":"stderr","created":1402574559233},{"file":"KENGO-PC-2732-stderr-1402574551935.txt","computername":"KENGO-PC","pid":2732,"type":"stderr","created":1402574551935},{"file":"KENGO-PC-2848-stderr-1402574565939.txt","computername":"KENGO-PC","pid":2848,"type":"stderr","created":1402574565939},{"file":"KENGO-PC-2908-stderr-1402574554776.txt","computername":"KENGO-PC","pid":2908,"type":"stderr","created":1402574554776},{"file":"KENGO-PC-3004-stderr-1402574560955.txt","computername":"KENGO-PC","pid":3004,"type":"stderr","created":1402574560955},{"file":"KENGO-PC-3136-stderr-1402574564365.txt","computername":"KENGO-PC","pid":3136,"type":"stderr","created":1402574564365},{"file":"KENGO-PC-3280-stderr-1402574559866.txt","computername":"KENGO-PC","pid":3280,"type":"stderr","created":1402574559866},{"file":"KENGO-PC-3580-stderr-1402574567224.txt","computername":"KENGO-PC","pid":3580,"type":"stderr","created":1402574567224},{"file":"KENGO-PC-364-stderr-1402574562486.txt","computername":"KENGO-PC","pid":364,"type":"stderr","created":1402574562486},{"file":"KENGO-PC-3768-stderr-1402574560142.txt","computername":"KENGO-PC","pid":3768,"type":"stderr","created":1402574560142},{"file":"KENGO-PC-3836-stderr-1402574563043.txt","computername":"KENGO-PC","pid":3836,"type":"stderr","created":1402574563043},{"file":"KENGO-PC-4128-stderr-1402574555037.txt","computername":"KENGO-PC","pid":4128,"type":"stderr","created":1402574555037},{"file":"KENGO-PC-4340-stderr-1402574568163.txt","computername":"KENGO-PC","pid":4340,"type":"stderr","created":1402574568163},{"file":"KENGO-PC-4464-stderr-1402574558216.txt","computername":"KENGO-PC","pid":4464,"type":"stderr","created":1402574558216},{"file":"KENGO-PC-4496-stderr-1402574557436.txt","computername":"KENGO-PC","pid":4496,"type":"stderr","created":1402574557436},{"file":"KENGO-PC-4676-stderr-1402574551200.txt","computername":"KENGO-PC","pid":4676,"type":"stderr","created":1402574551200},{"file":"KENGO-PC-4736-stderr-1402574556925.txt","computername":"KENGO-PC","pid":4736,"type":"stderr","created":1402574556925},{"file":"KENGO-PC-4760-stderr-1402574570413.txt","computername":"KENGO-PC","pid":4760,"type":"stderr","created":1402574570413},{"file":"KENGO-PC-4952-stderr-1402574566270.txt","computername":"KENGO-PC","pid":4952,"type":"stderr","created":1402574566270},{"file":"KENGO-PC-5028-stderr-1402574559487.txt","computername":"KENGO-PC","pid":5028,"type":"stderr","created":1402574559487},{"file":"KENGO-PC-5180-stderr-1402574560409.txt","computername":"KENGO-PC","pid":5180,"type":"stderr","created":1402574560409},{"file":"KENGO-PC-5236-stderr-1402574550945.txt","computername":"KENGO-PC","pid":5236,"type":"stderr","created":1402574550945},{"file":"KENGO-PC-5236-stderr-1402574570947.txt","computername":"KENGO-PC","pid":5236,"type":"stderr","created":1402574570947},{"file":"KENGO-PC-5252-stderr-1402574571464.txt","computername":"KENGO-PC","pid":5252,"type":"stderr","created":1402574571464},{"file":"KENGO-PC-5276-stderr-1402574557945.txt","computername":"KENGO-PC","pid":5276,"type":"stderr","created":1402574557945},{"file":"KENGO-PC-5384-stderr-1402574562742.txt","computername":"KENGO-PC","pid":5384,"type":"stderr","created":1402574562742},{"file":"KENGO-PC-5396-stderr-1402574563674.txt","computername":"KENGO-PC","pid":5396,"type":"stderr","created":1402574563674},{"file":"KENGO-PC-5428-stderr-1402574554256.txt","computername":"KENGO-PC","pid":5428,"type":"stderr","created":1402574554256},{"file":"KENGO-PC-5492-stderr-1402574557177.txt","computername":"KENGO-PC","pid":5492,"type":"stderr","created":1402574557177},{"file":"KENGO-PC-5700-stderr-1402574556663.txt","computername":"KENGO-PC","pid":5700,"type":"stderr","created":1402574556663},{"file":"KENGO-PC-572-stderr-1402574553487.txt","computername":"KENGO-PC","pid":572,"type":"stderr","created":1402574553487},{"file":"KENGO-PC-5736-stderr-1402574564022.txt","computername":"KENGO-PC","pid":5736,"type":"stderr","created":1402574564022},{"file":"KENGO-PC-5904-stderr-1402574561724.txt","computername":"KENGO-PC","pid":5904,"type":"stderr","created":1402574561724},{"file":"KENGO-PC-5980-stderr-1402574568835.txt","computername":"KENGO-PC","pid":5980,"type":"stderr","created":1402574568835},{"file":"KENGO-PC-6028-stderr-1402574557691.txt","computername":"KENGO-PC","pid":6028,"type":"stderr","created":1402574557691},{"file":"KENGO-PC-6040-stderr-1402574550411.txt","computername":"KENGO-PC","pid":6040,"type":"stderr","created":1402574550411},{"file":"KENGO-PC-6040-stderr-1402574569900.txt","computername":"KENGO-PC","pid":6040,"type":"stderr","created":1402574569900},{"file":"KENGO-PC-6160-stderr-1402574561469.txt","computername":"KENGO-PC","pid":6160,"type":"stderr","created":1402574561469},{"file":"KENGO-PC-6184-stderr-1402574571976.txt","computername":"KENGO-PC","pid":6184,"type":"stderr","created":1402574571976},{"file":"KENGO-PC-6324-stderr-1402574564672.txt","computername":"KENGO-PC","pid":6324,"type":"stderr","created":1402574564672},{"file":"KENGO-PC-6432-stderr-1402574565298.txt","computername":"KENGO-PC","pid":6432,"type":"stderr","created":1402574565298},{"file":"KENGO-PC-6476-stderr-1402574554515.txt","computername":"KENGO-PC","pid":6476,"type":"stderr","created":1402574554515},{"file":"KENGO-PC-6500-stderr-1402574555605.txt","computername":"KENGO-PC","pid":6500,"type":"stderr","created":1402574555605},{"file":"KENGO-PC-6548-stderr-1402574563357.txt","computername":"KENGO-PC","pid":6548,"type":"stderr","created":1402574563357},{"file":"KENGO-PC-6572-stderr-1402574562029.txt","computername":"KENGO-PC","pid":6572,"type":"stderr","created":1402574562029},{"file":"KENGO-PC-6660-stderr-1402574555881.txt","computername":"KENGO-PC","pid":6660,"type":"stderr","created":1402574555881},{"file":"KENGO-PC-6660-stdout-1402574575091.txt","computername":"KENGO-PC","pid":6660,"type":"stdout","created":1402574575091},{"file":"KENGO-PC-6732-stderr-1402574552967.txt","computername":"KENGO-PC","pid":6732,"type":"stderr","created":1402574552967},{"file":"KENGO-PC-6760-stderr-1402574551423.txt","computername":"KENGO-PC","pid":6760,"type":"stderr","created":1402574551423},{"file":"KENGO-PC-6800-stderr-1402574573138.txt","computername":"KENGO-PC","pid":6800,"type":"stderr","created":1402574573138},{"file":"KENGO-PC-6868-stderr-1402574572490.txt","computername":"KENGO-PC","pid":6868,"type":"stderr","created":1402574572490},{"file":"KENGO-PC-6872-stderr-1402574566564.txt","computername":"KENGO-PC","pid":6872,"type":"stderr","created":1402574566564},{"file":"KENGO-PC-6876-stderr-1402574565631.txt","computername":"KENGO-PC","pid":6876,"type":"stderr","created":1402574565631},{"file":"KENGO-PC-6896-stderr-1402574552447.txt","computername":"KENGO-PC","pid":6896,"type":"stderr","created":1402574552447},{"file":"KENGO-PC-6988-stderr-1402574558726.txt","computername":"KENGO-PC","pid":6988,"type":"stderr","created":1402574558726},{"file":"KENGO-PC-7052-stderr-1402574555350.txt","computername":"KENGO-PC","pid":7052,"type":"stderr","created":1402574555350},{"file":"KENGO-PC-7064-stderr-1402574558470.txt","computername":"KENGO-PC","pid":7064,"type":"stderr","created":1402574558470},{"file":"KENGO-PC-7104-stderr-1402574561210.txt","computername":"KENGO-PC","pid":7104,"type":"stderr","created":1402574561210},{"file":"KENGO-PC-7228-stderr-1402574551681.txt","computername":"KENGO-PC","pid":7228,"type":"stderr","created":1402574551681},{"file":"KENGO-PC-7316-stderr-1402574567552.txt","computername":"KENGO-PC","pid":7316,"type":"stderr","created":1402574567552},{"file":"KENGO-PC-7340-stderr-1402574548886.txt","computername":"KENGO-PC","pid":7340,"type":"stderr","created":1402574548886},{"file":"KENGO-PC-7340-stderr-1402574569202.txt","computername":"KENGO-PC","pid":7340,"type":"stderr","created":1402574569202},{"file":"KENGO-PC-7388-stderr-1402574547011.txt","computername":"KENGO-PC","pid":7388,"type":"stderr","created":1402574547011},{"file":"KENGO-PC-7408-stderr-1402574567832.txt","computername":"KENGO-PC","pid":7408,"type":"stderr","created":1402574567832},{"file":"KENGO-PC-7672-stderr-1402574556405.txt","computername":"KENGO-PC","pid":7672,"type":"stderr","created":1402574556405},{"file":"KENGO-PC-7700-stderr-1402574566899.txt","computername":"KENGO-PC","pid":7700,"type":"stderr","created":1402574566899},{"file":"KENGO-PC-7844-stderr-1402574564989.txt","computername":"KENGO-PC","pid":7844,"type":"stderr","created":1402574564989},{"file":"KENGO-PC-7948-stderr-1402574556150.txt","computername":"KENGO-PC","pid":7948,"type":"stderr","created":1402574556150},{"file":"KENGO-PC-7972-stderr-1402574553744.txt","computername":"KENGO-PC","pid":7972,"type":"stderr","created":1402574553744},{"file":"KENGO-PC-7988-stdout-1402573639623.txt","computername":"KENGO-PC","pid":7988,"type":"stdout","created":1402573639623},{"file":"KENGO-PC-8188-stderr-1402574558975.txt","computername":"KENGO-PC","pid":8188,"type":"stderr","created":1402574558975},{"file":"KENGO-PC-968-stderr-1402574553221.txt","computername":"KENGO-PC","pid":968,"type":"stderr","created":1402574553221}];
+        var lastUpdated = 1402574577751;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>

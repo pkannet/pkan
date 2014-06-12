@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div
+    input(type="text", id="message")
+    input(type="button", value="send", id="send")
+  ul#chat
