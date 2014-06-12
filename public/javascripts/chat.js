@@ -1,6 +1,7 @@
 $(function () {
     var socket = io.connect();
  
+    // receiveMessageソケットの挙動
     socket.on("receiveMessage", function (data) {
         $("#chat").prepend("<li>" + data.time + ": " + data.message + "</li>");
     });
@@ -10,6 +11,7 @@ $(function () {
  
         $("#message").val("");
  
+        // sendMessageソケットを発信（ブラウザ → サーバ）
         socket.emit("sendMessage", text);
     });
 });
