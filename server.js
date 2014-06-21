@@ -30,15 +30,19 @@ var io = require('socket.io').listen(app.listen(app.get('port')));
 
 io.sockets.on("connection", function (socket) {
 
+<<<<<<< HEAD
     // io.sockets.emit → broadcast(自分含む)
     // socket.broadcast.emit → broadcast(自分除く)
 
     // ■chat用
+=======
+>>>>>>> f558084989cb895dc8589ec8fece14ed4891328e
     // sendMessageソケットの挙動
     socket.on("sendMessage", function (text) {
 
         // receiveMessageソケットを発信（サーバ → ブラウザ）
         io.sockets.emit("receiveMessage", {
+<<<<<<< HEAD
             message: text,
             time:    new Date().toLocaleTimeString()
         });
@@ -56,4 +60,11 @@ io.sockets.on("connection", function (socket) {
     socket.on('disconnect', function() {
       socket.broadcast.emit('user disconnected');
     });
+=======
+             message: text
+            ,time:    new Date().toLocaleTimeString()
+        });
+
+    });
+>>>>>>> f558084989cb895dc8589ec8fece14ed4891328e
 });

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //- routes/index.jsから呼ばれる
 //- 受渡変数：title
 
@@ -46,3 +47,18 @@ block content
       br
       textarea#my-log(rows="15",cols="40")
 
+=======
+// routes/index.jsから呼ばれる
+// 受渡変数：title
+
+// layout.jadeを拡張
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div
+    input(type="text", id="message")
+    input(type="button", value="send", id="send")
+  ul#chat
+>>>>>>> f558084989cb895dc8589ec8fece14ed4891328e
