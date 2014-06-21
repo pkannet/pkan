@@ -1,0 +1,48 @@
+//- routes/index.jsから呼ばれる
+//- 受渡変数：title
+
+//- layout.jadeを拡張
+extends layout
+
+block content
+  //- h1= title
+  //- p Welcome to #{title}
+  //- div
+    //- input(type="text", id="message")
+    //- input(type="button", value="send", id="send")
+  //- ul#chat
+
+  div
+    button(type="button",onClick="startVideo()") Videoスタート
+    button(type="button",onClick="stopVideo()") Videoストップ
+    button(type="button",onClick="connect()") 通信開始
+    button(type="button",onClick="hangUp()") 切断
+    br
+    div
+      video#local-video(autoplay, style="width: 240px; height: 180px; border: 1px solid black;")
+      video#remote-video(autoplay, style="width: 240px; height: 180px; border: 1px solid black;")
+
+    p 自ブラウザのSDP情報:
+      br
+      textarea#text-for-send-sdp(rows="5",cols="40") 自ブラウザのSDP情報
+
+    //- p SDP to receive:
+      //- br
+      //- textarea#text-for-receive-sdp(rows="5",cols="100")
+      //- br
+      //- button(type="button",onclick="onSDP();") Receive SDP
+   
+    p 接続候補(candidate):
+      br
+      textarea#text-for-send-ice(rows="5",cols="40",onclick="this.focus(); this.select();") 接続候補(candidate)
+
+    //- p ICE Candidates to receive:
+      //- br
+      //- textarea#text-for-receive-ice(rows="5",cols="100")
+      //- br
+      //- button(type="button",onclick="onICE();") Receive ICE Candidates
+
+    p ログ:
+      br
+      textarea#my-log(rows="15",cols="40")
+
