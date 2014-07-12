@@ -1,25 +1,17 @@
-<<<<<<< HEAD
 doctype 5
 html
   head
     meta(name="viewport",content="width=device-width,user-scalable=yes")
     title= title
+    link(rel='stylesheet', href='/stylesheets/reset.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js')
+    //- Microsoft CDN(Content Delivery Network)を利用
+    //- 一覧：http://www.asp.net/ajaxlibrary/cdn.ashx
+    //- 
+    //- jQuery2.0系：IE6～8との互換性を切り捨てコードサイズを縮小している(=モバイル向け)
+    //- スマホでは jQuery2.x.x と jQuery Mobile 1.x.x を使う
+    script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js')
     script(src='/socket.io/socket.io.js')
-    //- script(src='/javascripts/chat.js')
     script(src='/javascripts/video.js')
-    //- script(src='/javascripts/socket.js')
   body
-=======
-doctype 5
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js')
-    script(src='/socket.io/socket.io.js')
-    script(src='/javascripts/chat.js')
-  body
->>>>>>> f558084989cb895dc8589ec8fece14ed4891328e
     block content

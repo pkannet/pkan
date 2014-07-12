@@ -1,7 +1,14 @@
+// サーバログ出力 ⇒ console.log
+// io.sockets.emit → brooadcast(自分含む)
+// socket.broadcast.emit → broadcast(自分除く)
+// 配列型のオブジェクトを見えやすく整形→JSON.stringify(xxx)
+// 改行コード→String.fromCharCode(13)
+
 // 依存モジュールの読み込み
-var express = require('express')    // expressモジュールをロード
-   ,routes = require('./routes')    // routesのパスをロード
-   ,path = require('path');
+var express = require('express')    // express.jsをロード
+   , routes = require('./routes')    // ./routes/index.jsをロード
+   , path = require('path')
+;
 
 var app = express();    // expressサーバを生成
 
@@ -18,8 +25,14 @@ app.configure(function(){
     app.use(express.static(path.join(__dirname, 'public')));  // 静的ファイルのパス → public
 });
 
+// 環境ごとの設定
+// 開発環境(NODE_ENV=development もしくは 指定ない)の場合
 app.configure('development', function(){
     app.use(express.errorHandler());
+});
+
+// 本番環境(NODE_ENV=production)の場合
+app.configure('production', function(){
 });
 
 // ルーティング
@@ -28,43 +41,39 @@ app.get('/', routes.index);     // ルートディレクトリをroutes/index.js
 // socket.ioモジュールをロード
 var io = require('socket.io').listen(app.listen(app.get('port')));
 
-io.sockets.on("connection", function (socket) {
+// 入室する部屋
+var rm;
 
-<<<<<<< HEAD
-    // io.sockets.emit → broadcast(自分含む)
-    // socket.broadcast.emit → broadcast(自分除く)
+// クライアントがサーバに接続した時
+chat = io.sockets.on('connection', function (socket) {
 
-    // ■chat用
-=======
->>>>>>> f558084989cb895dc8589ec8fece14ed4891328e
-    // sendMessageソケットの挙動
-    socket.on("sendMessage", function (text) {
+    // socketの内容をlogに記録
+    // console.log('◆socket.handshake◆'+JSON.stringify(socket.handshake));
 
-        // receiveMessageソケットを発信（サーバ → ブラウザ）
-        io.sockets.emit("receiveMessage", {
-<<<<<<< HEAD
-            message: text,
-            time:    new Date().toLocaleTimeString()
-        });
+    // initソケットの挙動
+    socket.on('init', function (req) {
 
+        // 入室する部屋の名前をlogに記録
+        // console.log('◆req◆' + JSON.stringify(req));
+
+        // roomパラメータを取得
+        rm = req.room;
+
+        // 入室
+        socket.join(rm);
     });
 
-    // ■video通信用
     // messageソケットの挙動
-    socket.on('message', function(message) {
-      //socket.broadcast.emit('message', message);
-      io.sockets.emit('message', message);
-    });
- 
-    // disconnectソケットの挙動
-    socket.on('disconnect', function() {
-      socket.broadcast.emit('user disconnected');
-    });
-=======
-             message: text
-            ,time:    new Date().toLocaleTimeString()
-        });
+    socket.on('message', function (message) {
 
+        // 同一の部屋に所属するユーザに発行
+        chat.to(rm).emit('message', message);
     });
->>>>>>> f558084989cb895dc8589ec8fece14ed4891328e
+
+    // disconnectソケットの挙動
+    socket.on('disconnect', function () {
+
+        // 部屋から退出
+        socket.leave(rm);
+    });
 });
